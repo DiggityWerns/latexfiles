@@ -1,0 +1,97 @@
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{matrix,calc}
+\usepackage{multicol}
+\usepackage{subcaption}
+\usepackage{parskip}
+\usepackage{color}
+\input{../kmap.tex}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{2 Variable Kmaps}
+\begin{kmap2var}
+   \content{1,2,3,4}
+\end{kmap2var}
+\begin{kmap2var}
+	\minterms{1,2}
+	\maxterms{0,3}
+	\termsol{1}{black}
+	\termsol{2}{red}
+\end{kmap2var}
+
+\section{3 Variable Kmap}
+\begin{kmap3var}
+   \content{1,2,3,4,5,6,7,8}
+\end{kmap3var}
+\begin{kmap3var}
+	\minterms{3,4}
+	\maxterms{0,1,6,7}
+	\dontcares{2,5}
+	\term{3}{2}{green}
+	\term{4}{5}{}
+\end{kmap3var}
+
+\section{4 Variable Kmap}
+\begin{kmap4var}
+   \content{1,2,3,4,5,6,7,8,8,10,11,12,13,14,15,16}
+\end{kmap4var}
+\begin{kmap4var}
+	\content{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
+	\term{0}{2}{red}
+	\term{5}{15}{blue}
+	\termtopbottom{3}{10}{blue}
+	\termcorners{orange}
+	\termsides{4}{14}{green}
+	\termsol{9}{green}
+\end{kmap4var}
+\pagebreak
+
+\section{5 Variable Example}
+\begin{figure}[h]
+	\centering
+	\begin{subfigure}{.4\textwidth}
+	\resizebox{\linewidth}{!}{
+	\begin{kmap4var}
+		\content{
+			1,1,1,1,
+			1,1,1,1,
+			1,1,1,1,
+			1,1,1,1}
+		%black, red, green, blue, cyan, magenta, yellow
+		\term{13}{9}{black} 	% ac'de'
+		\termsol{6}{red} 		% a'bcd'e'
+		\termsol{8}{green}		% ab'c'd'e'
+		\term{0}{6}{blue}		% a'e'
+		\term{0}{8}{cyan}		% c'd'e'
+		\term{3}{11}{magenta}	% cde'
+		\term{15}{10}{yellow}	% ace'
+	\end{kmap4var}}
+	\caption{$F_t(e')$}
+	\end{subfigure}
+	\begin{subfigure}{.4\textwidth}
+	\resizebox{\linewidth}{!}{
+	\begin{kmap4var}
+		\content{
+			1,1,1,1,
+			1,1,1,1,
+			1,1,1,1,
+			1,1,1,1}
+		%black, red, green, blue, cyan, magenta, yellow
+		\termsol{7}{black} 	% a'bcde
+		\termsol{6}{red} 		% ab'c'd'e
+		\termsol{15}{green}		% abcde
+		\term{0}{9}{blue}		% c'e
+		\term{0}{2}{cyan}		% a'b'e 
+		\term{14}{10}{magenta}	% acd'e
+		\term{11}{10}{yellow}	% ab'ce
+	\end{kmap4var}}
+	\caption{$F_t(e)$}
+	\end{subfigure}
+	\caption{Combine two 4 variable kmaps to get one 5 variable kmap}
+\end{figure}
+
+
+\end{document}
